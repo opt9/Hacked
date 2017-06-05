@@ -1,0 +1,10 @@
+#!/bin/sh
+
+BREACHED='https://haveibeenpwned.com/api/v2/breachedaccount/'
+PASTED='https://haveibeenpwned.com/api/v2/pasteaccount/'
+ACCT="$1"
+TARGET1=$BREACHED$ACCT
+TARGET2=$PASTED$ACCT
+
+curl -s -X GET $TARGET1 | jq .
+curl -s -X GET $TARGET2 | jq .
